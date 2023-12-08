@@ -1,3 +1,13 @@
+import Head from "next/head";
+import Image from "next/image";
+
+export const metadata = {
+    title: 'Tech blog',
+    description: 'Tech blog all the latest updates in cloud and IT',
+    openGraph: {
+        images: '/outsourcing.jpg',
+    },
+}
 const posts = [
     {
         id: 1,
@@ -21,13 +31,22 @@ const posts = [
 
 export default function Home() {
     return (
+        <>
+        <Head>
+            <title>Tech blog</title>
+            <meta property="og:title" content="Tech blog" key="title" />
+            <meta name="description" content="Tech blog all the latest updates in cloud and IT" />
+            <meta property="og:image" content="/blog.jpg" />
+
+        </Head>
         <div className="bg-white py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto max-w-2xl">
-                    <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the blog</h2>
-                    <p className="mt-2 text-lg leading-8 text-gray-600">
-                        Learn how to grow your business with our expert advice.
-                    </p>
+                    <h1 className="text-6xl text-emerald-600 font-bold tracking-tight pb-2 sm:text-6xl">
+                        From the blog</h1>
+                    <p className="text-xl text-emerald-900 underline font-bold tracking-tight  pb-10 sm:text-xl">
+                        Welcome to the tech blog catchup with latest updates in cloud and IT</p>
+                        <Image height={500} width={1000} className="w-full rounded-lg shadow-md" src="/blog.jpg"  alt="blog featured image"/>
                     <div className="mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16">
                         {posts.map((post) => (
                             <article key={post.id} className="flex max-w-xl flex-col items-start justify-between">
@@ -69,5 +88,6 @@ export default function Home() {
                 </div>
             </div>
         </div>
+        </>
     )
 }
